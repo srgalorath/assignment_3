@@ -4,6 +4,7 @@ import socket
 import ipaddress
 from datetime import datetime
 
+
 def pscan(server,port):
     try:
         s.connect((server,port))
