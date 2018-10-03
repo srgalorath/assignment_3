@@ -7,6 +7,8 @@ from tkinter import *
 import time
 target_ip = ""
 target_port = ""
+
+#This is where the magic of port scanning actually happens
 def pscan(server,port,s):
     try:
         s.connect((server,port))
@@ -52,7 +54,7 @@ def retrieve_ip():
     #Else it is just one port
     else:
         ports.append(target_port)
-
+    #Using this to build a list of html code to concatenate into a file
     html_list = ["<style>table {font-family: arial, sans-serif;border-collapse: collapse;width:30%;}td, th {border: 1px solid #dddddd;text-align: left;padding: 8px;}tr:nth-child(even) {background-color: #dddddd;}</style><h1>Steven's Amazing Port Scan</h1><h3>Run at: " + today + "</h3>"]
     #Scan and print to console
     for h in hosts:
@@ -69,11 +71,14 @@ def retrieve_ip():
                 status = "Closed"
             print(" Port: " + str(p) + " Status: " +status)
             html_list.append("<tr><td>" + str(p) + "</td><td>" + status+ "</td></tr>")
+    #Output the HTML to a file
     f = open("scan_" + today + ".html",'w')
     f.write(''.join(html_list))
     f.close()
     print("______________________FINISHED____________________________")
     print("scan_" + today + ".html created.")
+
+#Define the GUI
 root = Tk()
 root.title("Steven's Amazing Scanner")
 root.geometry("500x400")

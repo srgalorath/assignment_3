@@ -4,7 +4,7 @@ import socket
 import ipaddress
 from datetime import datetime
 
-
+#Port scanning actually happens
 def pscan(server,port):
     try:
         s.connect((server,port))
@@ -83,7 +83,7 @@ for h in hosts:
             status = "Closed"
         print(" Port: " + str(p) + " Status: " +status)
         html_list.append("<tr><td>" + str(p) + "</td><td>" + status+ "</td></tr>")
-# print(''.join(html_list))
+#Build the actual HTML Report
 f = open("scan_" + today + ".html",'w')
 f.write(''.join(html_list))
 f.close()
